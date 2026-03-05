@@ -5,8 +5,8 @@ This guide assumes you have Docker installed and an external PostgreSQL database
 ## 1. Clone and Configure
 
 ```bash
-git clone https://github.com/d6e-ai/d6e.git
-cd d6e
+git clone https://github.com/d6e-ai/d6e-setup.git
+cd d6e-setup
 cp .env.example .env
 ```
 
@@ -24,9 +24,9 @@ D6E_CONTAINER_TOKEN_SECRET=<generated-value>
 # Your public URL
 ORIGIN=https://your-domain.example.com
 
-# Get these from the d6e-auth administrator
+# D6E_AUTH_URL is pre-configured to https://www.d6e.ai
+# Get CLIENT_ID and CLIENT_SECRET from the d6e-auth administrator
 # (Contact them with your ORIGIN URL to register your instance)
-D6E_AUTH_URL=https://auth.d6e.ai
 D6E_AUTH_CLIENT_ID=d6e_xxxxxxxxxxxx
 D6E_AUTH_CLIENT_SECRET=d6es_xxxxxxxxxxxx
 ```

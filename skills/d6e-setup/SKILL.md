@@ -54,8 +54,8 @@ newgrp docker
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/d6e-ai/d6e.git
-cd d6e
+git clone https://github.com/d6e-ai/d6e-setup.git
+cd d6e-setup
 ```
 
 ### Step 2: Create the .env File
@@ -103,13 +103,13 @@ D6E uses an external authentication service called d6e-auth. You need to obtain 
 Set these values in `.env`:
 
 ```
-D6E_AUTH_URL=https://auth.d6e.ai
+D6E_AUTH_URL=https://www.d6e.ai
 D6E_AUTH_CLIENT_ID=d6e_xxxxxxxxxxxx
 D6E_AUTH_CLIENT_SECRET=d6es_xxxxxxxxxxxx
 D6E_AUTH_JWT_ISSUER=d6e-auth
 ```
 
-> **Note:** `D6E_AUTH_URL` is the URL of the d6e-auth server, not your D6E instance URL. Ask the administrator for this value as well.
+> **Note:** `D6E_AUTH_URL` is already set to `https://www.d6e.ai` in `.env.example`. You only need to set `D6E_AUTH_CLIENT_ID` and `D6E_AUTH_CLIENT_SECRET` which are obtained from the administrator.
 
 #### Required: Origin URL
 
@@ -215,12 +215,12 @@ docker compose up -d
 
 This starts the following services:
 
-| Service    | Description                     | Default Port |
-| ---------- | ------------------------------- | ------------ |
-| `api`      | D6E API server (Rust/Axum)      | 8080         |
-| `mcp`      | MCP server                      | 8081         |
-| `frontend` | SvelteKit frontend              | 3000         |
-| `caddy`    | Reverse proxy with auto HTTPS   | 80, 443      |
+| Service    | Description                   | Default Port |
+| ---------- | ----------------------------- | ------------ |
+| `api`      | D6E API server (Rust/Axum)    | 8080         |
+| `mcp`      | MCP server                    | 8081         |
+| `frontend` | SvelteKit frontend            | 3000         |
+| `caddy`    | Reverse proxy with auto HTTPS | 80, 443      |
 
 ### Step 6: Verify the Deployment
 
@@ -331,8 +331,8 @@ docker compose logs frontend
 
 ## Additional Resources
 
-- [D6E Repository](https://github.com/d6e-ai/d6e) - Main D6E repository
-- [D6E Documentation](https://github.com/d6e-ai/d6e/tree/main/docs) - Full documentation
+- [D6E Setup Repository](https://github.com/d6e-ai/d6e-setup) - Setup files cloned in Step 1
+- [D6E Platform](https://github.com/d6e-ai/d6e) - Main D6E repository
 - [D6E Docker STF Skills](https://github.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - Environment variables reference: [reference.md](reference.md)
 - Quick start guide: [../docs/QUICKSTART.md](../docs/QUICKSTART.md)

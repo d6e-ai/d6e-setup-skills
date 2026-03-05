@@ -57,6 +57,7 @@ This will automatically set up the skill in your Cursor environment.
    ```
 
 2. **Add to Cursor:**
+
    - Open Cursor Settings (Cmd/Ctrl + ,)
    - Navigate to "Features" → "Agent Skills"
    - Add skill directory: `/path/to/d6e-setup-skills/skills/d6e-setup`
@@ -148,8 +149,8 @@ Here's the error from docker compose logs...
 
 ## Related Resources
 
+- [D6E Setup](https://github.com/d6e-ai/d6e-setup) - Setup files (compose.yml, .env.example, seed.sql)
 - [D6E Platform](https://github.com/d6e-ai/d6e) - D6E main repository
-- [D6E Documentation](https://github.com/d6e-ai/d6e/tree/main/docs) - Full documentation
 - [D6E Docker STF Skills](https://github.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - [skills.sh](https://skills.sh) - The Open Agent Skills Ecosystem
 
