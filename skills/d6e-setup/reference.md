@@ -33,12 +33,12 @@ These are used for inter-container communication and typically do not need to be
 
 ## Authentication (d6e-auth)
 
-| Variable                 | Required | Default    | Description                                          |
-| ------------------------ | -------- | ---------- | ---------------------------------------------------- |
-| `D6E_AUTH_URL`           | Yes      | `https://www.d6e.ai` | d6e-auth server URL                    |
-| `D6E_AUTH_CLIENT_ID`     | Yes      | -          | OAuth client ID issued by d6e-auth administrator     |
-| `D6E_AUTH_CLIENT_SECRET` | Yes      | -          | OAuth client secret issued by d6e-auth administrator |
-| `D6E_AUTH_JWT_ISSUER`    | No       | `d6e-auth` | JWT issuer claim for token validation                |
+| Variable                 | Required | Default              | Description                                          |
+| ------------------------ | -------- | -------------------- | ---------------------------------------------------- |
+| `D6E_AUTH_URL`           | Yes      | `https://www.d6e.ai` | d6e-auth server URL                                  |
+| `D6E_AUTH_CLIENT_ID`     | Yes      | -                    | OAuth client ID issued by d6e-auth administrator     |
+| `D6E_AUTH_CLIENT_SECRET` | Yes      | -                    | OAuth client secret issued by d6e-auth administrator |
+| `D6E_AUTH_JWT_ISSUER`    | No       | `d6e-auth`           | JWT issuer claim for token validation                |
 
 ### How to Obtain d6e-auth Credentials
 

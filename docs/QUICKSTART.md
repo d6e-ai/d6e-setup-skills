@@ -22,7 +22,7 @@ DATABASE_URL=postgres://user:password@your-db-host:5432/d6e
 D6E_CONTAINER_TOKEN_SECRET=<generated-value>
 
 # Your public URL
-ORIGIN=https://your-domain.example.com
+ORIGIN=https://example.d6e.ai
 
 # D6E_AUTH_URL is pre-configured to https://www.d6e.ai
 # Get CLIENT_ID and CLIENT_SECRET from the d6e-auth administrator
@@ -50,13 +50,25 @@ cd ../..
 
 ```bash
 cat > Caddyfile << 'EOF'
-your-domain.example.com {
-    reverse_proxy frontend:3000
+example.d6e.ai {
+	# SvelteKit-served API routes (skills docs). Must come before the general /api/v1 block.
+	handle /api/v1/skills/* {
+		reverse_proxy frontend:3000
+	}
+
+	# Rust API (e.g. same-origin /api/v1/.../files/.../download). Must not hit SvelteKit.
+	handle /api/v1/* {
+		reverse_proxy api:8080
+	}
+
+	handle {
+		reverse_proxy frontend:3000
+	}
 }
 EOF
 ```
 
-Replace `your-domain.example.com` with your actual domain (DNS A record must point to this server).
+Replace `example.d6e.ai` with your domain (DNS A record must point to this server). Set `ORIGIN` in `.env` to match your public URL. Caddy obtains Let’s Encrypt certificates automatically; optionally add `tls you@example.com` inside the site block to set the ACME contact email (omit if unnecessary).
 
 ## 5. Start
 
@@ -71,7 +83,7 @@ docker compose ps        # All services should be "running"
 docker compose logs -f   # Check for errors
 ```
 
-Open `https://your-domain.example.com` in your browser.
+Open `https://example.d6e.ai` in your browser (use your real domain).
 
 ## Next Steps
 

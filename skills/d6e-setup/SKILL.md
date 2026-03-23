@@ -175,7 +175,19 @@ The `compose.yml` includes a Caddy reverse proxy that handles automatic HTTPS vi
 ```bash
 cat > Caddyfile << 'EOF'
 example.d6e.ai {
-    reverse_proxy frontend:3000
+	# SvelteKit-served API routes (skills docs). Must come before the general /api/v1 block.
+	handle /api/v1/skills/* {
+		reverse_proxy frontend:3000
+	}
+
+	# Rust API (e.g. same-origin /api/v1/.../files/.../download). Must not hit SvelteKit.
+	handle /api/v1/* {
+		reverse_proxy api:8080
+	}
+
+	handle {
+		reverse_proxy frontend:3000
+	}
 }
 EOF
 ```
@@ -189,23 +201,9 @@ Replace `example.d6e.ai` with your actual domain.
 - The domain must have a DNS A record pointing to your server's public IP
 - No manual certificate management is needed
 
-**Multiple subdomains (optional):**
+**`tls` (optional):** You do not need a `tls` line for HTTPS. Caddy’s automatic HTTPS still issues certificates. Add `tls you@example.com` inside the site block only if you want to register a contact email with Let’s Encrypt (certificate expiry notices, account-related messages).
 
-If you want to expose the API or MCP endpoints on separate subdomains:
-
-```
-example.d6e.ai {
-    reverse_proxy frontend:3000
-}
-
-api.example.d6e.ai {
-    reverse_proxy api:8080
-}
-
-mcp.example.d6e.ai {
-    reverse_proxy mcp:8081
-}
-```
+**Optional:** You can expose the Rust API on a separate hostname (e.g. `api.example.d6e.ai`) with its own `reverse_proxy api:8080` site block if your deployment requires it. The default single-host configuration above routes `/api/v1/*` to the API and `/api/v1/skills/*` to SvelteKit; keep that path order if you extend the file.
 
 ### Step 5: Start the Services
 
@@ -240,12 +238,12 @@ This starts the following services:
 
 3. **Access the application:**
 
-   Open `https://your-domain.example.com` in a browser. You should see the D6E login page.
+   Open your instance URL (e.g. `https://example.d6e.ai`) in a browser. You should see the D6E login page.
 
 4. **Verify API health:**
 
    ```bash
-   curl -s https://your-domain.example.com/api/v1/health
+   curl -s https://example.d6e.ai/api/v1/health
    ```
 
 ## Architecture
