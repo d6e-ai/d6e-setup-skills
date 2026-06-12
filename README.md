@@ -1,7 +1,7 @@
 # D6E Setup Skills
 
 [![Skills](https://img.shields.io/badge/skills.sh-d6e--setup--skills-blue)](https://skills.sh)
-[![GitHub](https://img.shields.io/github/stars/d6e-ai/d6e-setup-skills?style=social)](https://github.com/d6e-ai/d6e-setup-skills)
+[![GitLab](https://img.shields.io/badge/GitLab-d6e--ai%2Fd6e--setup--skills-FC6D26?logo=gitlab)](https://gitlab.com/d6e-ai/d6e-setup-skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Claude/Cursor Agent Skills for deploying and configuring D6E platform instances.
@@ -38,13 +38,15 @@ Teaches Claude/Cursor how to help users deploy D6E, including:
 
 ### Quick Install (Recommended)
 
-Install this skill using the skills.sh CLI:
+Install this skill using the skills CLI:
 
 ```bash
-npx skills add d6e-ai/d6e-setup-skills
+npx skills add https://gitlab.com/d6e-ai/d6e-setup-skills
 ```
 
 This will automatically set up the skill in your Cursor environment.
+
+> This repository is hosted on GitLab, so the full URL is required — the GitHub-style `owner/repo` shorthand does not work.
 
 ### Manual Installation
 
@@ -53,7 +55,7 @@ This will automatically set up the skill in your Cursor environment.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/d6e-ai/d6e-setup-skills.git
+   git clone https://gitlab.com/d6e-ai/d6e-setup-skills.git
    ```
 
 2. **Add to Cursor:**
@@ -72,7 +74,7 @@ This will automatically set up the skill in your Cursor environment.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/d6e-ai/d6e-setup-skills.git
+   git clone https://gitlab.com/d6e-ai/d6e-setup-skills.git
    ```
 
 2. **Reference the skill:**
@@ -151,7 +153,7 @@ Here's the error from docker compose logs...
 
 - [D6E Setup](https://github.com/d6e-ai/d6e-setup) - Setup files (compose.yml, .env.example, seed.sql)
 - [D6E Platform](https://github.com/d6e-ai/d6e) - D6E main repository
-- [D6E Docker STF Skills](https://github.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
+- [D6E Docker STF Skills](https://gitlab.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - [skills.sh](https://skills.sh) - The Open Agent Skills Ecosystem
 
 ## Contributing

@@ -331,6 +331,6 @@ docker compose logs frontend
 
 - [D6E Setup Repository](https://github.com/d6e-ai/d6e-setup) - Setup files cloned in Step 1
 - [D6E Platform](https://github.com/d6e-ai/d6e) - Main D6E repository
-- [D6E Docker STF Skills](https://github.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
+- [D6E Docker STF Skills](https://gitlab.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - Environment variables reference: [reference.md](reference.md)
 - Quick start guide: [../docs/QUICKSTART.md](../docs/QUICKSTART.md)
