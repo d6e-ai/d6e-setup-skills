@@ -28,8 +28,8 @@ These are used for inter-container communication and typically do not need to be
 | -------------------- | -------- | ------------------------------------- | -------------------------------- |
 | `D6E_API_URL`        | No       | `http://api:8080`                     | API URL used by frontend and MCP |
 | `D6E_MCP_SERVER_URL` | No       | `http://mcp:8081/mcp`                 | MCP server URL used by frontend  |
-| `OLLAMA_BASE_URL`    | No       | `http://host.docker.internal:11434`   | Ollama API URL (host machine)    |
-| `LM_STUDIO_BASE_URL` | No       | `http://host.docker.internal:1234/v1` | LM Studio API URL (host machine) |
+| `OLLAMA_BASE_URL`    | No       | - (opt-in)                            | Local Ollama URL (OpenAI-compatible, must include `/v1`), e.g. `http://host.docker.internal:11434/v1`    |
+| `LM_STUDIO_BASE_URL` | No       | - (opt-in)                            | Local LM Studio URL (OpenAI-compatible), e.g. `http://host.docker.internal:1234/v1` |
 
 ## Authentication (d6e-auth)
 
@@ -61,24 +61,24 @@ These are used for inter-container communication and typically do not need to be
 | `D6E_CONTAINER_TOKEN_SECRET` | Yes      | -       | Secret key for signing Docker container auth tokens. Generate with `openssl rand -base64 32`                |
 | `ORIGIN`                     | Yes      | -       | Public URL of D6E instance (e.g. `https://example.d6e.ai`). Used by SvelteKit and OAuth redirect validation |
 
-## LLM API Keys (Optional)
+## AI / LLM (Vercel AI Gateway)
 
-These are only needed if you want to use AI features.
+All cloud LLM calls — chat completion and embeddings — route through the Vercel AI Gateway. The gateway key is normally issued and managed centrally by d6e-auth per instance.
 
-| Variable            | Required | Default | Description                      |
-| ------------------- | -------- | ------- | -------------------------------- |
-| `OPENAI_API_KEY`    | No       | -       | OpenAI API key (`sk-...`)        |
-| `ANTHROPIC_API_KEY` | No       | -       | Anthropic API key (`sk-ant-...`) |
-| `GOOGLE_API_KEY`    | No       | -       | Google AI API key                |
+| Variable             | Required | Default | Description                                                                                        |
+| -------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------- |
+| `AI_GATEWAY_API_KEY` | No       | -       | Vercel AI Gateway key. Dev/local fallback only; in production d6e-auth provisions it per instance. |
+
+> Per-provider keys (`OPENAI_API_KEY` / `ANTHROPIC_API_KEY` / `GOOGLE_API_KEY`) are **no-ops** on the instance — those credentials live inside the Gateway project managed by d6e-auth.
 
 ## Embedding Configuration (Optional)
 
-Required only for similarity search features. `GOOGLE_API_KEY` must also be set.
+Required only for similarity search features. Embeddings route through the AI Gateway (no separate provider key needed).
 
-| Variable               | Required | Default                | Description                 |
-| ---------------------- | -------- | ---------------------- | --------------------------- |
-| `EMBEDDING_MODEL`      | No       | `gemini-embedding-001` | Embedding model name        |
-| `EMBEDDING_DIMENSIONS` | No       | `768`                  | Embedding vector dimensions |
+| Variable               | Required | Default              | Description                 |
+| ---------------------- | -------- | -------------------- | --------------------------- |
+| `EMBEDDING_MODEL`      | No       | `gemini-embedding-2` | Embedding model name        |
+| `EMBEDDING_DIMENSIONS` | No       | `768`                | Embedding vector dimensions |
 
 ## Minimal .env Example
 
@@ -102,4 +102,4 @@ D6E_AUTH_CLIENT_SECRET=d6es_xxxxxxxxxxxx
 
 | File          | Use Case                 | Description                                        |
 | ------------- | ------------------------ | -------------------------------------------------- |
-| `compose.yml` | Production (external DB) | Uses pre-built images from ghcr.io, includes Caddy |
+| `compose.yml` | Production (external DB) | Uses pre-built images from the GitLab Container Registry, includes Caddy |

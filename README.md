@@ -8,7 +8,7 @@ Claude/Cursor Agent Skills for deploying and configuring D6E platform instances.
 
 ## What is This?
 
-This repository contains **Agent Skills** that teach Claude and Cursor how to help users set up and deploy [D6E](https://github.com/d6e-ai/d6e) — an AI-native Business Intelligence platform.
+This repository contains **Agent Skills** that teach Claude and Cursor how to help users set up and deploy [D6E](https://gitlab.com/d6e-ai/d6e) — an AI-native Business Intelligence platform.
 
 ### What are Agent Skills?
 
@@ -151,8 +151,8 @@ Here's the error from docker compose logs...
 
 ## Related Resources
 
-- [D6E Setup](https://github.com/d6e-ai/d6e-setup) - Setup files (compose.yml, .env.example, seed.sql)
-- [D6E Platform](https://github.com/d6e-ai/d6e) - D6E main repository
+- [D6E Setup](https://gitlab.com/d6e-ai/d6e-setup) - Setup files (compose.yml, .env.example, seed.sql)
+- [D6E Platform](https://gitlab.com/d6e-ai/d6e) - D6E main repository
 - [D6E Docker STF Skills](https://gitlab.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - [skills.sh](https://skills.sh) - The Open Agent Skills Ecosystem
 

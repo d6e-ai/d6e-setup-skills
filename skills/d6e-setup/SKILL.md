@@ -7,7 +7,7 @@ description: Sets up a D6E platform instance using Docker Compose with an extern
 
 ## Overview
 
-This skill guides the setup of a [D6E](https://github.com/d6e-ai/d6e) platform instance. D6E is an AI-native Business Intelligence platform that enables natural language data analysis. The deployment uses Docker Compose with pre-built images from GitHub Container Registry, an external PostgreSQL database, and Caddy for automatic HTTPS.
+This skill guides the setup of a [D6E](https://gitlab.com/d6e-ai/d6e) platform instance. D6E is an AI-native Business Intelligence platform that enables natural language data analysis. The deployment uses Docker Compose with pre-built images from the GitLab Container Registry, an external PostgreSQL database, and Caddy for automatic HTTPS.
 
 ## When to Use
 
@@ -54,7 +54,7 @@ newgrp docker
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/d6e-ai/d6e-setup.git
+git clone https://gitlab.com/d6e-ai/d6e-setup.git
 cd d6e-setup
 ```
 
@@ -119,24 +119,24 @@ Set `ORIGIN` to your D6E instance's public URL. This is used by SvelteKit and fo
 ORIGIN=https://example.d6e.ai
 ```
 
-#### Optional: LLM API Keys
+#### Optional: AI Gateway Key
 
-Set these only if you need AI features:
+All cloud LLM calls (chat + embeddings) route through the Vercel AI Gateway. In production the gateway key is issued and managed centrally by d6e-auth, so you normally leave this empty — set it only as an explicit dev/local fallback before the d6e-auth-managed key is provisioned:
 
 ```
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=sk-ant-...
-GOOGLE_API_KEY=...
+AI_GATEWAY_API_KEY=
 ```
 
-For local LLM servers (Ollama, LM Studio), the default Docker host URLs are pre-configured.
+> **Note:** Per-provider keys (`OPENAI_API_KEY` / `ANTHROPIC_API_KEY` / `GOOGLE_API_KEY`) are **no-ops** on the instance — those credentials live inside the Gateway project that d6e-auth manages.
+
+For local LLM servers (Ollama / LM Studio), opt in by uncommenting `OLLAMA_BASE_URL` / `LM_STUDIO_BASE_URL` in `.env`. Use the full OpenAI-compatible URL **including the `/v1` suffix** (e.g. `http://host.docker.internal:11434/v1`); optionally set `OLLAMA_MODELS` / `LM_STUDIO_MODELS` (JSON) to override model discovery.
 
 #### Optional: Embedding Configuration
 
-If using similarity search features (requires `GOOGLE_API_KEY`):
+Embeddings also route through the AI Gateway (no separate provider key required). Tune the model and output dimensionality used for similarity search:
 
 ```
-EMBEDDING_MODEL=gemini-embedding-001
+EMBEDDING_MODEL=gemini-embedding-2
 EMBEDDING_DIMENSIONS=768
 ```
 
@@ -324,13 +324,13 @@ docker compose logs frontend
 ### Embedding / Vector features not working
 
 - Ensure the PostgreSQL database has the pgvector extension installed
-- Verify `GOOGLE_API_KEY` is set if using Google embedding models
+- Verify the AI Gateway key is available (managed by d6e-auth, or `AI_GATEWAY_API_KEY` set as a fallback)
 - Check that `EMBEDDING_MODEL` and `EMBEDDING_DIMENSIONS` are configured
 
 ## Additional Resources
 
-- [D6E Setup Repository](https://github.com/d6e-ai/d6e-setup) - Setup files cloned in Step 1
-- [D6E Platform](https://github.com/d6e-ai/d6e) - Main D6E repository
+- [D6E Setup Repository](https://gitlab.com/d6e-ai/d6e-setup) - Setup files cloned in Step 1
+- [D6E Platform](https://gitlab.com/d6e-ai/d6e) - Main D6E repository
 - [D6E Docker STF Skills](https://gitlab.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - Environment variables reference: [reference.md](reference.md)
 - Quick start guide: [../docs/QUICKSTART.md](../docs/QUICKSTART.md)
