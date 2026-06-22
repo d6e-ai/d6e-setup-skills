@@ -5,7 +5,7 @@ This guide assumes you have Docker installed and an external PostgreSQL database
 ## 1. Clone and Configure
 
 ```bash
-git clone https://github.com/d6e-ai/d6e-setup.git
+git clone https://gitlab.com/d6e-ai/d6e-setup.git
 cd d6e-setup
 cp .env.example .env
 ```
