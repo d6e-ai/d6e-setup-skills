@@ -119,6 +119,8 @@ Set `ORIGIN` to your D6E instance's public URL. This is used by SvelteKit and fo
 ORIGIN=https://example.d6e.ai
 ```
 
+> **Note:** If external custom frontends log in through this instance, their **deployed** callback URLs must be listed in `ALLOWED_REDIRECT_URIS` (comma-separated, in addition to `${ORIGIN}/auth/callback`). Loopback URLs (localhost / 127.0.0.0/8 / [::1], any port) are always allowed on api v0.20.1+ and never need to be listed.
+
 #### Optional: AI Gateway Key
 
 All cloud LLM calls (chat + embeddings) route through the Vercel AI Gateway. In production the gateway key is issued and managed centrally by d6e-auth, so you normally leave this empty — set it only as an explicit dev/local fallback before the d6e-auth-managed key is provisioned:
