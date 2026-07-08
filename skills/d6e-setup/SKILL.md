@@ -113,13 +113,21 @@ D6E_AUTH_JWT_ISSUER=d6e-auth
 
 #### Required: Origin URL
 
-Set `ORIGIN` to your D6E instance's public URL. This is used by SvelteKit and for OAuth redirect URI validation:
+Set `ORIGIN` to your D6E instance's public URL. This is used by the
+built-in SvelteKit console (including `${ORIGIN}/auth/callback` for
+instance login):
 
 ```
 ORIGIN=https://example.d6e.ai
 ```
 
-> **Note:** If external custom frontends log in through this instance, their **deployed** callback URLs must be listed in `ALLOWED_REDIRECT_URIS` (comma-separated, in addition to `${ORIGIN}/auth/callback`). Loopback URLs (localhost / 127.0.0.0/8 / [::1], any port) are always allowed on api v0.20.1+ and never need to be listed.
+When you deploy **custom frontends** that log in through this instance,
+register each deployed callback URL on **d6e-auth** — either instance-wide
+in the franchise portal (`${D6E_AUTH_URL}/{locale}/account/franchise` →
+instance card → **Redirect URIs**) or per-workspace in the d6e console
+(Workspace Settings → Integration → **Redirect URIs**). The instance no
+longer reads `ALLOWED_REDIRECT_URIS`; d6e-auth validates redirect URIs
+at authorize and token exchange. Loopback dev URLs need no registration.
 
 #### Optional: AI Gateway Key
 
@@ -316,6 +324,8 @@ docker compose logs frontend
 - Verify `D6E_AUTH_URL`, `D6E_AUTH_CLIENT_ID`, and `D6E_AUTH_CLIENT_SECRET` are correctly set
 - Ensure the d6e-auth server is accessible from your D6E instance
 - Confirm that `ORIGIN` matches your actual public URL (including `https://`)
+- For the **built-in console**, ensure `${ORIGIN}/auth/callback` is in the instance's `registered_client.redirectUris` on d6e-auth (set when the administrator runs `register-client.js`)
+- For **custom frontends**, register each deployed callback URL on d6e-auth (franchise portal or per-workspace Redirect URIs in the console); loopback URLs need no registration
 - Contact the d6e-auth administrator to verify your client registration
 
 ### Docker STFs not executing

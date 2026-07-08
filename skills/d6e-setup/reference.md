@@ -59,8 +59,7 @@ These are used for inter-container communication and typically do not need to be
 | Variable                     | Required | Default | Description                                                                                                 |
 | ---------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------- |
 | `D6E_CONTAINER_TOKEN_SECRET` | Yes      | -       | Secret key for signing Docker container auth tokens. Generate with `openssl rand -base64 32`                |
-| `ORIGIN`                     | Yes      | -       | Public URL of D6E instance (e.g. `https://example.d6e.ai`). Used by SvelteKit and OAuth redirect validation |
-| `ALLOWED_REDIRECT_URIS`      | No       | -       | Extra OAuth callback URLs (comma-separated) for external custom frontends that exchange the auth code at this instance's `/api/v1/auth/token`, in addition to `${ORIGIN}/auth/callback`. Loopback URLs (localhost / 127.0.0.0/8 / [::1], any port) are always allowed on api v0.20.1+ and never need to be listed |
+| `ORIGIN`                     | Yes      | -       | Public URL of D6E instance (e.g. `https://example.d6e.ai`). Used by the built-in SvelteKit console; `${ORIGIN}/auth/callback` should be registered on d6e-auth when the instance client is created. Custom frontend callback URLs are also registered on d6e-auth (franchise portal or per-workspace Redirect URIs), not via instance env vars. |
 
 ## AI / LLM (Vercel AI Gateway)
 
