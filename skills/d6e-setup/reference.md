@@ -102,4 +102,4 @@ D6E_AUTH_CLIENT_SECRET=d6es_xxxxxxxxxxxx
 
 | File          | Use Case                 | Description                                        |
 | ------------- | ------------------------ | -------------------------------------------------- |
-| `compose.yml` | Production (external DB) | Uses pre-built images from the GitLab Container Registry, includes Caddy |
+| `compose.yml` | Production (external DB) | Uses public `ghcr.io/d6e-ai/d6e/{api,mcp,frontend}` images, includes Caddy |

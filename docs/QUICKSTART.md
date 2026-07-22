@@ -5,7 +5,7 @@ This guide assumes you have Docker installed and an external PostgreSQL database
 ## 1. Clone and Configure
 
 ```bash
-git clone https://gitlab.com/d6e-ai/d6e-setup.git
+git clone https://github.com/d6e-ai/d6e-setup.git
 cd d6e-setup
 cp .env.example .env
 ```
@@ -89,4 +89,4 @@ Open `https://example.d6e.ai` in your browser (use your real domain).
 
 - See the full [Setup Guide](../skills/d6e-setup/SKILL.md) for detailed instructions
 - See the [Environment Variables Reference](../skills/d6e-setup/reference.md) for all configuration options
-- See [D6E Docker STF Skills](https://gitlab.com/d6e-ai/d6e-docker-stf-skills) to create custom workflow functions
+- See [D6E Docker STF Skills](https://github.com/d6e-ai/d6e-docker-stf-skills) to create custom workflow functions
