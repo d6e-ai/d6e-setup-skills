@@ -7,7 +7,7 @@ description: Sets up a D6E platform instance using Docker Compose with an extern
 
 ## Overview
 
-This skill guides the setup of a [D6E](https://gitlab.com/d6e-ai/d6e) platform instance. D6E is an AI-native Business Intelligence platform that enables natural language data analysis. The deployment uses Docker Compose with pre-built images from the GitLab Container Registry, an external PostgreSQL database, and Caddy for automatic HTTPS.
+This skill guides the setup of a [D6E](https://github.com/d6e-ai/d6e) platform instance. D6E is an AI-native Business Intelligence platform that enables natural language data analysis. The deployment uses Docker Compose with pre-built public images from GitHub Container Registry (`ghcr.io/d6e-ai/d6e/{api,mcp,frontend}`), an external PostgreSQL database, and Caddy for automatic HTTPS.
 
 ## When to Use
 
@@ -54,7 +54,7 @@ newgrp docker
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://gitlab.com/d6e-ai/d6e-setup.git
+git clone https://github.com/d6e-ai/d6e-setup.git
 cd d6e-setup
 ```
 
@@ -341,8 +341,8 @@ docker compose logs frontend
 
 ## Additional Resources
 
-- [D6E Setup Repository](https://gitlab.com/d6e-ai/d6e-setup) - Setup files cloned in Step 1
-- [D6E Platform](https://gitlab.com/d6e-ai/d6e) - Main D6E repository
-- [D6E Docker STF Skills](https://gitlab.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
+- [D6E Setup Repository](https://github.com/d6e-ai/d6e-setup) - Setup files cloned in Step 1
+- [D6E Platform](https://github.com/d6e-ai/d6e) - Main D6E repository
+- [D6E Docker STF Skills](https://github.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - Environment variables reference: [reference.md](reference.md)
 - Quick start guide: [../docs/QUICKSTART.md](../docs/QUICKSTART.md)

@@ -1,14 +1,14 @@
 # D6E Setup Skills
 
 [![Skills](https://img.shields.io/badge/skills.sh-d6e--setup--skills-blue)](https://skills.sh)
-[![GitLab](https://img.shields.io/badge/GitLab-d6e--ai%2Fd6e--setup--skills-FC6D26?logo=gitlab)](https://gitlab.com/d6e-ai/d6e-setup-skills)
+[![GitHub](https://img.shields.io/badge/GitHub-d6e--ai%2Fd6e--setup--skills-181717?logo=github)](https://github.com/d6e-ai/d6e-setup-skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Claude/Cursor Agent Skills for deploying and configuring D6E platform instances.
 
 ## What is This?
 
-This repository contains **Agent Skills** that teach Claude and Cursor how to help users set up and deploy [D6E](https://gitlab.com/d6e-ai/d6e) — an AI-native Business Intelligence platform.
+This repository contains **Agent Skills** that teach Claude and Cursor how to help users set up and deploy [D6E](https://github.com/d6e-ai/d6e) — an AI-native Business Intelligence platform.
 
 ### What are Agent Skills?
 
@@ -41,12 +41,12 @@ Teaches Claude/Cursor how to help users deploy D6E, including:
 Install this skill using the skills CLI:
 
 ```bash
-npx skills add https://gitlab.com/d6e-ai/d6e-setup-skills
+npx skills add d6e-ai/d6e-setup-skills
 ```
 
 This will automatically set up the skill in your Cursor environment.
 
-> This repository is hosted on GitLab, so the full URL is required — the GitHub-style `owner/repo` shorthand does not work.
+The GitHub `owner/repo` shorthand is supported by the skills CLI.
 
 ### Manual Installation
 
@@ -55,7 +55,7 @@ This will automatically set up the skill in your Cursor environment.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://gitlab.com/d6e-ai/d6e-setup-skills.git
+   git clone https://github.com/d6e-ai/d6e-setup-skills.git
    ```
 
 2. **Add to Cursor:**
@@ -74,7 +74,7 @@ This will automatically set up the skill in your Cursor environment.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://gitlab.com/d6e-ai/d6e-setup-skills.git
+   git clone https://github.com/d6e-ai/d6e-setup-skills.git
    ```
 
 2. **Reference the skill:**
@@ -151,9 +151,9 @@ Here's the error from docker compose logs...
 
 ## Related Resources
 
-- [D6E Setup](https://gitlab.com/d6e-ai/d6e-setup) - Setup files (compose.yml, .env.example, seed.sql)
-- [D6E Platform](https://gitlab.com/d6e-ai/d6e) - D6E main repository
-- [D6E Docker STF Skills](https://gitlab.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
+- [D6E Setup](https://github.com/d6e-ai/d6e-setup) - Setup files (compose.yml, .env.example, seed.sql)
+- [D6E Platform](https://github.com/d6e-ai/d6e) - D6E main repository
+- [D6E Docker STF Skills](https://github.com/d6e-ai/d6e-docker-stf-skills) - Skills for creating custom Docker STFs
 - [skills.sh](https://skills.sh) - The Open Agent Skills Ecosystem
 
 ## Contributing
